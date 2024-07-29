@@ -11,9 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
-                sh 'cd target'
-                sh 'ls'
-                sh 'mv roshambo.war pipeline.war'
+                sh 'mv ./target/roshambo.war ./target/pipeline.war'
             }
         }        
         stage('Deploy') {
