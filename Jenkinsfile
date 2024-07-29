@@ -1,12 +1,5 @@
 pipeline {
     agent any
-
-    stages {
-        stage('clone') {
-            steps {
-                echo 'Hello world!'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'mvn package'
@@ -14,16 +7,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                 echo 'Hello world!'
-                // sh 'mvn test'
+                sh 'mvn test'
+                sh 'cd target'
+                sh 'mv roshambo.war pipeline.war'
             }
         }        
         stage('Deploy') {
             steps {
-             echo 'Hello world!'
-                // sshagent(credentials: ['tomcat']) {
-                //     sh 'scp -oStrictHostKeyChecking=no target/*.war USERNAME@IPADDRESS:TYPE_PATH'
-                // }
+               deploy adapters: [tomcat9(credentialsId: 'fbedcda7-ed83-4521-b672-b87875ed4ff9', path: '', url: 'http://13.69.144.11:8090/')], contextPath: null, war: '**/*.war'
             }
         }       
     }
