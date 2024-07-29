@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                // git credentialsId: 'github', url: 'https://github.com/aftab70/maven.git'
+                
             }
         }
         stage('Build') {
