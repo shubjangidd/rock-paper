@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'mvn test'
                 sh 'cd target'
+                sh 'ls'
                 sh 'mv roshambo.war pipeline.war'
             }
         }        
