@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-             echo 'Hello world!'
-                // sh 'mvn package'
+                sh 'mvn package'
             }
         }
         stage('Test') {
